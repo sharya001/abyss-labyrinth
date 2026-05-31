@@ -1343,7 +1343,7 @@
             }
         </style>
             <!-- Font Awesome 6 (本地离线) -->
-            <link rel="stylesheet" href="assets/fontawesome/all.min.css">
+            <link rel="stylesheet" href="assets/font/game-icons.css">
             <style>
                 /* Font Awesome icon sizing helpers for the game */
                 .ico-xs { font-size: 0.65em; }
@@ -1356,15 +1356,15 @@
                 .ico-stat { font-size: 13px; width: 18px; display: inline-block; text-align: center; }
                 /* Map entity icon styling */
                 .map-icon { display: inline-block; width: 1.3em; text-align: center; font-style: normal; }
-                .map-icon.fa-solid { font-family: "Font Awesome 6 Free"; font-weight: 900; }
+                .map-icon[class*="gi-"] { font-family: "game-icons"; }
                 /* Map display FA icon sizing */
-                #map-display .fa-solid { font-size: inherit; }
+                #map-display [class*="gi-"] { font-size: inherit; }
             </style>
         </head>
 <body>
     <!-- 音效开关按钮 -->
-    <button id="sfx-toggle" onclick="toggleSfx()" title="音效开关"><i class="fa-solid fa-volume-high"></i></button>
-        <button id="auto-attack-toggle" onclick="toggleAutoAttack()" title="自动攻击"><i class="fa-solid fa-gavel"></i></button>
+    <button id="sfx-toggle" onclick="toggleSfx()" title="音效开关"><i class="gi-gi-volume"></i></button>
+        <button id="auto-attack-toggle" onclick="toggleAutoAttack()" title="自动攻击"><i class="gi-gi-attack"></i></button>
     
     <!-- [BGM 已禁用 - 保留备份] <button id="bgm-toggle" onclick="toggleBgm()" title="BGM开关" style="top: 58px;">🎵</button> -->
     
@@ -1404,7 +1404,7 @@
                 <label>输入角色名 (最多8字)</label>
                 <div class="name-input-row">
                     <input type="text" id="player-name-input" maxlength="8" placeholder="无名勇者" autocomplete="off">
-                    <button id="random-name-btn" onclick="generateRandomName()" title="随机生成名字"><i class="fa-solid fa-dice"></i></button>
+                    <button id="random-name-btn" onclick="generateRandomName()" title="随机生成名字"><i class="gi-gi-dice"></i></button>
                 </div>
             </div>
             
@@ -1421,7 +1421,7 @@
             
             <!-- 角色信息面板 -->
             <div class="panel">
-                <div class="panel-title" id="sidebar-panel-title"><i class="fa-solid fa-hat-wizard"></i> 角色</div>
+                <div class="panel-title" id="sidebar-panel-title"><i class="gi-gi-wizard"></i> 角色</div>
                 <div class="char-info">
                     <div id="sidebar-avatar-wrap">
                         <div class="char-avatar-placeholder" id="sidebar-avatar-placeholder"><div class="pxl-avatar pxl-warrior" id="sidebar-avatar-pxl"></div></div>
@@ -1429,12 +1429,12 @@
                     </div>
                     <span class="char-name" id="sidebar-name">无名勇者</span>
                 </div>
-                <div class="char-class" id="sidebar-class" style="color:#0f0;font-size:11px;text-align:center;"><i class="fa-solid fa-gavel"></i> 战士</div>
+                <div class="char-class" id="sidebar-class" style="color:#0f0;font-size:11px;text-align:center;"><i class="gi-gi-attack"></i> 战士</div>
             </div>
             
             <!-- 状态面板 -->
                         <div class="panel">
-                            <div class="panel-title"><i class="fa-solid fa-chart-bar"></i> 角色状态</div>
+                            <div class="panel-title"><i class="gi-gi-chart"></i> 角色状态</div>
                             <!-- HP 血条 -->
                             <div class="hp-bar-container">
                                 <div class="hp-bar-fill" id="hp-bar-fill" style="width: 100%"></div>
@@ -1442,9 +1442,9 @@
                             </div>
                             <!-- 属性网格 2×2 -->
                             <div class="stat-grid">
-                                <div class="stat-cell"><span class="stat-icon"><i class="fa-solid fa-gavel"></i></span><span class="stat-val" id="stat-atk">10</span></div>
-                                <div class="stat-cell"><span class="stat-icon"><i class="fa-solid fa-shield-halved"></i></span><span class="stat-val" id="stat-def">5</span></div>
-                                <div class="stat-cell"><span class="stat-icon"><i class="fa-solid fa-coins"></i></span><span class="stat-val" id="stat-gold">0</span></div>
+                                <div class="stat-cell"><span class="stat-icon"><i class="gi-gi-attack"></i></span><span class="stat-val" id="stat-atk">10</span></div>
+                                <div class="stat-cell"><span class="stat-icon"><i class="gi-gi-defense"></i></span><span class="stat-val" id="stat-def">5</span></div>
+                                <div class="stat-cell"><span class="stat-icon"><i class="gi-gi-coins"></i></span><span class="stat-val" id="stat-gold">0</span></div>
                                 <div class="stat-cell"><span class="stat-icon">⭐</span><span class="stat-val" id="stat-level">1</span></div>
                             </div>
                             <!-- 经验条 -->
@@ -1456,17 +1456,17 @@
             
 <!-- 装备面板 3×3 -->
             <div class="panel" id="equip-panel">
-                <div class="panel-title"><i class="fa-solid fa-backpack"></i> 装备</div>
+                <div class="panel-title"><i class="gi-gi-chest"></i> 装备</div>
                 <div class="equip-grid" id="equip-grid">
-                    <div class="equip-slot" id="eslot-mainHand"><span class="es-icon"><i class="fa-solid fa-gavel"></i></span><span class="es-name">空</span></div>
-                    <div class="equip-slot" id="eslot-offHand"><span class="es-icon"><i class="fa-solid fa-shield-halved"></i></span><span class="es-name">空</span></div>
-                    <div class="equip-slot" id="eslot-helmet"><span class="es-icon"><i class="fa-solid fa-hard-hat"></i></span><span class="es-name">空</span></div>
-                    <div class="equip-slot" id="eslot-chest"><span class="es-icon"><i class="fa-solid fa-shirt"></i></span><span class="es-name">空</span></div>
-                    <div class="equip-slot" id="eslot-gloves"><span class="es-icon"><i class="fa-solid fa-hand-back-fist"></i></span><span class="es-name">空</span></div>
-                    <div class="equip-slot" id="eslot-boots"><span class="es-icon"><i class="fa-solid fa-shoe-prints"></i></span><span class="es-name">空</span></div>
-                    <div class="equip-slot" id="eslot-ring1"><span class="es-icon"><i class="fa-solid fa-ring"></i></span><span class="es-name">空</span></div>
-                    <div class="equip-slot" id="eslot-ring2"><span class="es-icon"><i class="fa-solid fa-ring"></i></span><span class="es-name">空</span></div>
-                    <div class="equip-slot" id="eslot-necklace"><span class="es-icon"><i class="fa-solid fa-gem"></i></span><span class="es-name">空</span></div>
+                    <div class="equip-slot" id="eslot-mainHand"><span class="es-icon"><i class="gi-gi-attack"></i></span><span class="es-name">空</span></div>
+                    <div class="equip-slot" id="eslot-offHand"><span class="es-icon"><i class="gi-gi-defense"></i></span><span class="es-name">空</span></div>
+                    <div class="equip-slot" id="eslot-helmet"><span class="es-icon"><i class="gi-gi-helmet"></i></span><span class="es-name">空</span></div>
+                    <div class="equip-slot" id="eslot-chest"><span class="es-icon"><i class="gi-gi-chest-armor"></i></span><span class="es-name">空</span></div>
+                    <div class="equip-slot" id="eslot-gloves"><span class="es-icon"><i class="gi-gi-gloves"></i></span><span class="es-name">空</span></div>
+                    <div class="equip-slot" id="eslot-boots"><span class="es-icon"><i class="gi-gi-boots"></i></span><span class="es-name">空</span></div>
+                    <div class="equip-slot" id="eslot-ring1"><span class="es-icon"><i class="gi-gi-ring"></i></span><span class="es-name">空</span></div>
+                    <div class="equip-slot" id="eslot-ring2"><span class="es-icon"><i class="gi-gi-ring"></i></span><span class="es-name">空</span></div>
+                    <div class="equip-slot" id="eslot-necklace"><span class="es-icon"><i class="gi-gi-treasure"></i></span><span class="es-name">空</span></div>
                 </div>
             </div>
             
@@ -1475,33 +1475,33 @@
                 <div class="panel-title">⭐ 天赋</div>
                 <div class="talent-points" id="talent-points-display">可用天赋点: 0</div>
                 <div class="talent-list" id="talent-list"></div>
-                <button class="skill-btn cooldown" id="skill-btn" onclick="useActiveSkill()"><i class="fa-solid fa-lock"></i> 未学习技能</button>
+                <button class="skill-btn cooldown" id="skill-btn" onclick="useActiveSkill()"><i class="gi-gi-shield"></i> 未学习技能</button>
             </div>
             
             <!-- 楼层信息面板 -->
             <div class="panel">
                 <div class="panel-title" style="display:flex;justify-content:space-between;align-items:center;">
-                    <span><i class="fa-solid fa-castle"></i> 楼层信息</span>
-                    <span id="info-theme" style="font-size:12px;color:#0f0;"><i class="fa-solid fa-circle"></i> 深渊</span>
+                    <span><i class="gi-gi-chest"></i> 楼层信息</span>
+                    <span id="info-theme" style="font-size:12px;color:#0f0;"><i class="gi-gi-darkness"></i> 深渊</span>
                 </div>
                 <div id="floor-info">
                     <div class="floor-card">
-                        <span class="floor-card-icon"><i class="fa-solid fa-castle"></i></span>
+                        <span class="floor-card-icon"><i class="gi-gi-chest"></i></span>
                         <span class="floor-card-value" id="info-floor">1</span>
                         <span class="floor-card-label">层数</span>
                     </div>
                     <div class="floor-card">
-                        <span class="floor-card-icon"><i class="fa-solid fa-skull"></i></span>
+                        <span class="floor-card-icon"><i class="gi-gi-skull"></i></span>
                         <span class="floor-card-value" id="info-enemy">普通</span>
                         <span class="floor-card-label">强度</span>
                     </div>
                     <div class="floor-card">
-                        <span class="floor-card-icon"><i class="fa-solid fa-dragon"></i></span>
+                        <span class="floor-card-icon"><i class="gi-gi-boss"></i></span>
                         <span class="floor-card-value" id="info-enemies">0</span>
                         <span class="floor-card-label">敌人</span>
                     </div>
                     <div class="floor-card">
-                        <span class="floor-card-icon"><i class="fa-solid fa-gift"></i></span>
+                        <span class="floor-card-icon"><i class="gi-gi-chest"></i></span>
                         <span class="floor-card-value" id="info-chests">0</span>
                         <span class="floor-card-label">宝箱</span>
                     </div>
@@ -1511,7 +1511,7 @@
             <!-- 按键说明面板 -->
                         <div id="key-hint-panel">
                             <div class="kh-title">⌨️ 按键说明</div>
-                            <div class="kh-section"><i class="fa-solid fa-gamepad"></i> 操作</div>
+                            <div class="kh-section"><i class="gi-gi-dice"></i> 操作</div>
                             <div class="kh-row"><span><span class="kh-key">↑↓←→</span></span><span class="kh-desc">移动</span></div>
                             <div class="kh-row"><span><span class="kh-key">C</span></span><span class="kh-desc">角色面板</span></div>
                             <div class="kh-row"><span><span class="kh-key">Tab</span></span><span class="kh-desc">装备详情</span></div>
@@ -1519,7 +1519,7 @@
                             <div class="kh-row"><span><span class="kh-key">P</span></span><span class="kh-desc">成就面板</span></div>
                             <div class="kh-row"><span><span class="kh-key">ESC</span></span><span class="kh-desc">关闭弹窗</span></div>
                             <div class="kh-row"><span><span class="kh-key">`</span></span><span class="kh-desc">精灵模式</span></div>
-                            <div class="kh-section"><i class="fa-solid fa-wrench"></i> 调试</div>
+                            <div class="kh-section"><i class="gi-gi-gear"></i> 调试</div>
                             <div class="kh-row"><span><span class="kh-key">0</span></span><span class="kh-desc">无敌</span></div>
                             <div class="kh-row"><span><span class="kh-key">1</span></span><span class="kh-desc">秒杀</span></div>
                             <div class="kh-row"><span><span class="kh-key">9</span></span><span class="kh-desc">跳Boss层</span></div>
@@ -1551,7 +1551,7 @@
     <!-- 游戏结束覆盖层 -->
     <div id="game-over">
         <h1>GAME OVER</h1>
-        <p><span id="final-name">无名勇者</span> <span id="final-class"><i class="fa-solid fa-gavel"></i> 战士</span> 存活了 <span id="final-floor">0</span> 层</p>
+        <p><span id="final-name">无名勇者</span> <span id="final-class"><i class="gi-gi-attack"></i> 战士</span> 存活了 <span id="final-floor">0</span> 层</p>
         <button id="restart-btn" onclick="backToStart()">重新开始</button>
             </div>
     
@@ -1566,7 +1566,7 @@
     
             <!-- 成就面板 -->
             <div id="achieve-panel">
-                <h2><i class="fa-solid fa-trophy"></i> 成就</h2>
+                <h2><i class="gi-gi-treasure"></i> 成就</h2>
                 <div class="ach-progress" id="ach-progress"></div>
                 <div id="achieve-list"></div>
                 <div style="text-align:center; margin-top:15px;">
@@ -1579,8 +1579,8 @@
     <div id="shop-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center;">
         <div style="background: #1a1a1a; border: 3px solid #ffa500; border-radius: 10px; padding: 20px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid #ffa500; padding-bottom: 10px;">
-                <h2 style="color: #ffa500; margin: 0; font-size: 20px;" id="shop-title"><i class="fa-solid fa-store"></i> 商店</h2>
-                <div style="color: #ffd700; font-size: 16px; font-weight: bold;"><i class="fa-solid fa-coins"></i> <span id="shop-gold">0</span>G</div>
+                <h2 style="color: #ffa500; margin: 0; font-size: 20px;" id="shop-title"><i class="gi-gi-merchant"></i> 商店</h2>
+                <div style="color: #ffd700; font-size: 16px; font-weight: bold;"><i class="gi-gi-coins"></i> <span id="shop-gold">0</span>G</div>
             </div>
             <div id="shop-items-container"></div>
             <button onclick="closeShop()" style="margin-top: 15px; padding: 8px 20px; background: #444; color: #fff; border: 2px solid #ffa500; border-radius: 5px; cursor: pointer; font-size: 14px; width: 100%;">关闭商店</button>
@@ -1602,7 +1602,7 @@
     <div id="equip-detail-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:3000; align-items:center; justify-content:center;">
         <div style="background:#111; border:3px solid #0ff; border-radius:12px; padding:20px; max-width:700px; width:94%; max-height:90vh; overflow-y:auto;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:2px solid #0ff; padding-bottom:8px;">
-                <h2 style="color:#0ff; margin:0; font-size:18px;"><i class="fa-solid fa-backpack"></i> 装备详情 [Tab]</h2>
+                <h2 style="color:#0ff; margin:0; font-size:18px;"><i class="gi-gi-chest"></i> 装备详情 [Tab]</h2>
                 <span style="color:#888; font-size:12px;">总加成: <span id="ed-total-bonus" style="color:#0f0;">-</span></span>
             </div>
             <div id="equip-detail-content"></div>
@@ -1614,7 +1614,7 @@
     <div id="levelup-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:3200; align-items:center; justify-content:center;">
         <div style="background:#111; border:3px solid #ff0; border-radius:12px; padding:24px; max-width:600px; width:90%;">
             <div style="text-align:center; margin-bottom:16px;">
-                <div style="color:#ff0; font-size:22px; font-weight:bold;"><i class="fa-solid fa-champagne-glasses"></i> 升级！</div>
+                <div style="color:#ff0; font-size:22px; font-weight:bold;"><i class="gi-gi-explosion"></i> 升级！</div>
                 <div style="color:#0f0; font-size:16px; margin-top:4px;">Lv.<span id="lu-level">1</span> → Lv.<span id="lu-newlevel">2</span></div>
                 <div style="color:#888; font-size:12px; margin-top:4px;">选择一个属性加成</div>
             </div>
@@ -1625,11 +1625,11 @@
     <!-- 装备对比弹窗 -->
     <div id="equip-compare-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:3300; align-items:center; justify-content:center;">
         <div style="background:#111; border:3px solid #fa0; border-radius:12px; padding:20px; max-width:700px; width:92%;">
-            <div style="text-align:center; color:#fa0; font-size:18px; font-weight:bold; margin-bottom:12px;"><i class="fa-solid fa-box-open"></i> 获得新装备</div>
+            <div style="text-align:center; color:#fa0; font-size:18px; font-weight:bold; margin-bottom:12px;"><i class="gi-gi-chest"></i> 获得新装备</div>
             <div id="equip-compare-content" style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px;"></div>
             <div style="display:flex; gap:10px;">
-                <button onclick="equipCompareChoose(true)" style="flex:1; padding:10px; background:#0a2a0a; border:2px solid #0f0; border-radius:6px; color:#0f0; font-size:15px; font-weight:bold; cursor:pointer;"><i class="fa-solid fa-square-check"></i> 替换</button>
-                <button onclick="equipCompareChoose(false)" style="flex:1; padding:10px; background:#2a0a0a; border:2px solid #f00; border-radius:6px; color:#f66; font-size:15px; font-weight:bold; cursor:pointer;"><i class="fa-solid fa-square-xmark"></i> 放弃</button>
+                <button onclick="equipCompareChoose(true)" style="flex:1; padding:10px; background:#0a2a0a; border:2px solid #0f0; border-radius:6px; color:#0f0; font-size:15px; font-weight:bold; cursor:pointer;"><i class="gi-gi-chart"></i> 替换</button>
+                <button onclick="equipCompareChoose(false)" style="flex:1; padding:10px; background:#2a0a0a; border:2px solid #f00; border-radius:6px; color:#f66; font-size:15px; font-weight:bold; cursor:pointer;"><i class="gi-gi-explosion"></i> 放弃</button>
             </div>
         </div>
     </div>
@@ -1638,7 +1638,7 @@
         <div id="char-sheet-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:3100; align-items:center; justify-content:center;">
                 <div style="background:#111; border:3px solid #0f0; border-radius:12px; padding:16px 20px; max-width:960px; width:95%; max-height:92vh; overflow:hidden;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; border-bottom:2px solid #0f0; padding-bottom:6px;">
-                        <h2 style="color:#0f0; margin:0; font-size:18px;"><i class="fa-solid fa-clipboard-list"></i> 角色属性</h2>
+                        <h2 style="color:#0f0; margin:0; font-size:18px;"><i class="gi-gi-chart"></i> 角色属性</h2>
                         <span style="color:#888; font-size:12px;">[C] / [ESC] 关闭</span>
                     </div>
                     <div id="char-sheet-content" style="display:grid; grid-template-columns:1fr 1fr; gap:14px;"></div>
@@ -1662,10 +1662,10 @@
                     <!-- 铁匠铺：强化+合成弹窗 -->
                     <div id="blacksmith-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:3200; align-items:center; justify-content:center;">
                         <div style="background:#111; border:3px solid #f90; border-radius:12px; padding:20px; max-width:700px; width:94%; max-height:85vh; overflow-y:auto;">
-                            <div style="text-align:center;color:#f90;font-size:18px;font-weight:bold;margin-bottom:8px;"><i class="fa-solid fa-hammer"></i> 铁匠铺</div>
+                            <div style="text-align:center;color:#f90;font-size:18px;font-weight:bold;margin-bottom:8px;"><i class="gi-gi-blacksmith"></i> 铁匠铺</div>
                             <div style="display:flex;gap:8px;margin-bottom:12px;">
-                                <button id="bs-tab-enhance" onclick="switchBlacksmithTab('enhance')" style="flex:1;padding:8px;background:#2a1a00;border:2px solid #f90;border-radius:6px;color:#f90;font-size:14px;font-weight:bold;cursor:pointer;"><i class="fa-solid fa-hammer"></i> 强化装备</button>
-                                <button id="bs-tab-synth" onclick="switchBlacksmithTab('synth')" style="flex:1;padding:8px;background:#111;border:2px solid #555;border-radius:6px;color:#888;font-size:14px;cursor:pointer;"><i class="fa-solid fa-flask"></i> 合成装备</button>
+                                <button id="bs-tab-enhance" onclick="switchBlacksmithTab('enhance')" style="flex:1;padding:8px;background:#2a1a00;border:2px solid #f90;border-radius:6px;color:#f90;font-size:14px;font-weight:bold;cursor:pointer;"><i class="gi-gi-blacksmith"></i> 强化装备</button>
+                                <button id="bs-tab-synth" onclick="switchBlacksmithTab('synth')" style="flex:1;padding:8px;background:#111;border:2px solid #555;border-radius:6px;color:#888;font-size:14px;cursor:pointer;"><i class="gi-gi-potion"></i> 合成装备</button>
                             </div>
                             <div id="blacksmith-content"></div>
                             <div style="text-align:center;margin-top:12px;"><button onclick="closeBlacksmith()" style="padding:6px 20px;background:#333;color:#aaa;border:1px solid #555;border-radius:4px;cursor:pointer;font-size:14px;">[ESC] 离开</button></div>
@@ -1685,121 +1685,121 @@
         // ║  ICON SYSTEM: Emoji → Font Awesome 6    ║
         // ╚══════════════════════════════════════════╝
         const ICON_MAP = {
-            '†': 'fa-solid fa-cross',
-            '☠️': 'fa-solid fa-skull-crossbones',
-            '♻️': 'fa-solid fa-recycle',
-            '⚔': 'fa-solid fa-khanda',
-            '⚔️': 'fa-solid fa-khanda',
-            '⚠️': 'fa-solid fa-triangle-exclamation',
-            '⚡': 'fa-solid fa-bolt',
-            '⚫': 'fa-solid fa-circle',
-            '⛑️': 'fa-solid fa-hard-hat',
-            '⛓️': 'fa-solid fa-link',
-            '⛧': 'fa-solid fa-star-of-david',
-            '✅': 'fa-solid fa-square-check',
-            '✋': 'fa-solid fa-hand',
-            '✟': 'fa-solid fa-cross',
-            '✨': 'fa-solid fa-sparkles',
-            '❄️': 'fa-solid fa-snowflake',
-            '❌': 'fa-solid fa-square-xmark',
-            '❤': 'fa-solid fa-heart',
-            '❤️': 'fa-solid fa-heart',
-            '🌀': 'fa-solid fa-fan',
-            '🌋': 'fa-solid fa-mountain-fire',
-            '🌍': 'fa-solid fa-earth-americas',
-            '🌑': 'fa-solid fa-circle',
-            '🌟': 'fa-solid fa-star',
-            '🌪️': 'fa-solid fa-tornado',
-            '🌲': 'fa-solid fa-tree',
-            '🌳': 'fa-solid fa-tree',
-            '🍀': 'fa-solid fa-clover',
-            '🍃': 'fa-solid fa-leaf',
-            '🎁': 'fa-solid fa-gift',
-            '🎉': 'fa-solid fa-champagne-glasses',
-            '🎒': 'fa-solid fa-backpack',
-            '🎩': 'fa-solid fa-hard-hat',
-            '🎮': 'fa-solid fa-gamepad',
-            '🎯': 'fa-solid fa-bullseye',
-            '🎲': 'fa-solid fa-dice',
-            '🎵': 'fa-solid fa-music',
-            '🏆': 'fa-solid fa-trophy',
-            '🏋️': 'fa-solid fa-dumbbell',
-            '🏗️': 'fa-solid fa-hammer',
-            '🏛️': 'fa-solid fa-landmark-columns',
-            '🏪': 'fa-solid fa-store',
-            '🏰': 'fa-solid fa-castle',
-            '🐛': 'fa-solid fa-bug',
-            '🐲': 'fa-solid fa-dragon',
-            '🐺': 'fa-solid fa-paw',
-            '👁️': 'fa-solid fa-eye',
-            '👊': 'fa-solid fa-hand-fist',
-            '👑': 'fa-solid fa-crown',
-            '👕': 'fa-solid fa-shirt',
-            '👢': 'fa-solid fa-shoe-prints',
-            '👣': 'fa-solid fa-shoe-prints',
-            '👤': 'fa-solid fa-user-secret',
-            '👹': 'fa-solid fa-dragon',
-            '👺': 'fa-solid fa-skull',
-            '👻': 'fa-solid fa-ghost',
-            '💀': 'fa-solid fa-skull',
-            '💉': 'fa-solid fa-syringe',
-            '💍': 'fa-solid fa-ring',
-            '💎': 'fa-solid fa-gem',
-            '💔': 'fa-solid fa-heart-crack',
-            '💚': 'fa-solid fa-heart-pulse',
-            '💠': 'fa-solid fa-snowflake',
-            '💡': 'fa-solid fa-lightbulb',
-            '💥': 'fa-solid fa-explosion',
-            '💪': 'fa-solid fa-dumbbell',
-            '💬': 'fa-solid fa-comment',
-            '💰': 'fa-solid fa-coins',
-            '📈': 'fa-solid fa-chart-line',
-            '📊': 'fa-solid fa-chart-bar',
-            '📋': 'fa-solid fa-clipboard-list',
-            '📚': 'fa-solid fa-book-open',
-            '📜': 'fa-solid fa-scroll',
-            '📦': 'fa-solid fa-box-open',
-            '📿': 'fa-solid fa-gem',
-            '🔇': 'fa-solid fa-volume-xmark',
-            '🔊': 'fa-solid fa-volume-high',
-            '🔒': 'fa-solid fa-lock',
-            '🔗': 'fa-solid fa-link',
-            '🔥': 'fa-solid fa-fire',
-            '🔧': 'fa-solid fa-wrench',
-            '🔩': 'fa-solid fa-gear',
-            '🔮': 'fa-solid fa-crystal-ball',
-            '🔷': 'fa-solid fa-diamond',
-            '🕯️': 'fa-solid fa-lightbulb',
-            '🕳️': 'fa-solid fa-circle-down',
-            '🕷️': 'fa-solid fa-spider',
-            '🗡': 'fa-solid fa-gavel',
-            '🗡️': 'fa-solid fa-gavel',
-            '🗿': 'fa-solid fa-gem',
-            '😱': 'fa-solid fa-face-surprise',
-            '😵': 'fa-solid fa-face-dizzy',
-            '🚩': 'fa-solid fa-flag',
-            '🚪': 'fa-solid fa-door-open',
-            '🛒': 'fa-solid fa-cart-shopping',
-            '🛡': 'fa-solid fa-shield-halved',
-            '🛡️': 'fa-solid fa-shield-halved',
-            '🤝': 'fa-solid fa-handshake',
-            '🤺': 'fa-solid fa-person-rifle',
-            '🥷': 'fa-solid fa-user-ninja',
-            '🦇': 'fa-solid fa-moon',
-            '🦌': 'fa-solid fa-horse',
-            '🦎': 'fa-solid fa-dragon',
-            '🦺': 'fa-solid fa-vest',
-            '🧊': 'fa-solid fa-cube',
-            '🧙': 'fa-solid fa-hat-wizard',
-            '🧝': 'fa-solid fa-person-rifle',
-            '🧤': 'fa-solid fa-hand-back-fist',
-            '🧪': 'fa-solid fa-flask',
-            '🧭': 'fa-solid fa-compass',
-            '🧱': 'fa-solid fa-cubes',
-            '🧹': 'fa-solid fa-broom',
-            '🧿': 'fa-solid fa-gem',
-            '🩸': 'fa-solid fa-droplet',
-            '🪨': 'fa-solid fa-mountain',
+            '†': 'gi-gi-skull',
+            '☠️': 'gi-gi-skull',
+            '♻️': 'gi-gi-gear',
+            '⚔': 'gi-gi-attack',
+            '⚔️': 'gi-gi-attack',
+            '⚠️': 'gi-gi-explosion',
+            '⚡': 'gi-gi-arena',
+            '⚫': 'gi-gi-darkness',
+            '⛑️': 'gi-gi-helmet',
+            '⛓️': 'gi-gi-link',
+            '⛧': 'gi-gi-magic',
+            '✅': 'gi-gi-chart',
+            '✋': 'gi-gi-fist',
+            '✟': 'gi-gi-skull',
+            '✨': 'gi-gi-magic',
+            '❄️': 'gi-gi-snowflake',
+            '❌': 'gi-gi-explosion',
+            '❤': 'gi-gi-heart',
+            '❤️': 'gi-gi-heart',
+            '🌀': 'gi-gi-portal',
+            '🌋': 'gi-gi-fire',
+            '🌍': 'gi-gi-chest',
+            '🌑': 'gi-gi-darkness',
+            '🌟': 'gi-gi-magic',
+            '🌪️': 'gi-gi-magic',
+            '🌲': 'gi-gi-treant',
+            '🌳': 'gi-gi-treant',
+            '🍀': 'gi-gi-clover',
+            '🍃': 'gi-gi-magic',
+            '🎁': 'gi-gi-chest',
+            '🎉': 'gi-gi-explosion',
+            '🎒': 'gi-gi-chest',
+            '🎩': 'gi-gi-helmet',
+            '🎮': 'gi-gi-dice',
+            '🎯': 'gi-gi-dice',
+            '🎲': 'gi-gi-dice',
+            '🎵': 'gi-gi-volume',
+            '🏆': 'gi-gi-treasure',
+            '🏋️': 'gi-gi-fist',
+            '🏗️': 'gi-gi-blacksmith',
+            '🏛️': 'gi-gi-chest',
+            '🏪': 'gi-gi-merchant',
+            '🏰': 'gi-gi-chest',
+            '🐛': 'gi-gi-worm',
+            '🐲': 'gi-gi-boss',
+            '🐺': 'gi-gi-wolf',
+            '👁️': 'gi-gi-darkness',
+            '👊': 'gi-gi-fist',
+            '👑': 'gi-gi-elite',
+            '👕': 'gi-gi-chest-armor',
+            '👢': 'gi-gi-boots',
+            '👣': 'gi-gi-boots',
+            '👤': 'gi-gi-shadow',
+            '👹': 'gi-gi-boss',
+            '👺': 'gi-gi-skull',
+            '👻': 'gi-gi-ghost',
+            '💀': 'gi-gi-skull',
+            '💉': 'gi-gi-potion',
+            '💍': 'gi-gi-ring',
+            '💎': 'gi-gi-treasure',
+            '💔': 'gi-gi-heart',
+            '💚': 'gi-gi-healer',
+            '💠': 'gi-gi-snowflake',
+            '💡': 'gi-gi-fire',
+            '💥': 'gi-gi-explosion',
+            '💪': 'gi-gi-fist',
+            '💬': 'gi-gi-chart',
+            '💰': 'gi-gi-coins',
+            '📈': 'gi-gi-chart',
+            '📊': 'gi-gi-chart',
+            '📋': 'gi-gi-chart',
+            '📚': 'gi-gi-library',
+            '📜': 'gi-gi-library',
+            '📦': 'gi-gi-chest',
+            '📿': 'gi-gi-treasure',
+            '🔇': 'gi-gi-volume',
+            '🔊': 'gi-gi-volume',
+            '🔒': 'gi-gi-shield',
+            '🔗': 'gi-gi-link',
+            '🔥': 'gi-gi-fire',
+            '🔧': 'gi-gi-gear',
+            '🔩': 'gi-gi-gear',
+            '🔮': 'gi-gi-magic',
+            '🔷': 'gi-gi-treasure',
+            '🕯️': 'gi-gi-fire',
+            '🕳️': 'gi-gi-portal',
+            '🕷️': 'gi-gi-spider',
+            '🗡': 'gi-gi-attack',
+            '🗡️': 'gi-gi-attack',
+            '🗿': 'gi-gi-treasure',
+            '😱': 'gi-gi-explosion',
+            '😵': 'gi-gi-explosion',
+            '🚩': 'gi-gi-sword',
+            '🚪': 'gi-gi-portal-town',
+            '🛒': 'gi-gi-merchant',
+            '🛡': 'gi-gi-defense',
+            '🛡️': 'gi-gi-defense',
+            '🤝': 'gi-gi-fist',
+            '🤺': 'gi-gi-attack',
+            '🥷': 'gi-gi-shadow',
+            '🦇': 'gi-gi-bat',
+            '🦌': 'gi-gi-yeti',
+            '🦎': 'gi-gi-boss',
+            '🦺': 'gi-gi-chest-armor',
+            '🧊': 'gi-gi-ice-spirit',
+            '🧙': 'gi-gi-wizard',
+            '🧝': 'gi-gi-attack',
+            '🧤': 'gi-gi-gloves',
+            '🧪': 'gi-gi-potion',
+            '🧭': 'gi-gi-chart',
+            '🧱': 'gi-gi-golem',
+            '🧹': 'gi-gi-wizard',
+            '🧿': 'gi-gi-treasure',
+            '🩸': 'gi-gi-droplet',
+            '🪨': 'gi-gi-golem',
         };
         /** Convert a single emoji to Font Awesome <i> HTML */
         function ico(emoji, extraClass) {
@@ -2515,7 +2515,7 @@ let spriteMode = false;
 
                 const bgm = { muted: false, playing: false, currentTheme: 'abyss', audio: null, fadeTimer: null, _lastTrack: '', _pickTrack(theme) { const tracks = BGM_TRACKS[theme] || BGM_TRACKS.abyss; let pick; do { pick = tracks[Math.floor(Math.random() * tracks.length)]; } while (pick === this._lastTrack && tracks.length > 1); this._lastTrack = pick; return BGM_DIR + '/' + theme + '/' + pick; }, stop() { this.playing = false; if (this.fadeTimer) { clearInterval(this.fadeTimer); this.fadeTimer = null; } if (this.audio) { this.audio.pause(); this.audio.currentTime = 0; this.audio.src = ''; this.audio = null; } }, fadeOut(dur, cb) { if (!this.audio) { if (cb) cb(); return; } if (this.fadeTimer) { clearInterval(this.fadeTimer); } const steps = 20; const interval = (dur * 1000) / steps; const startVol = this.audio.volume; let step = 0; this.fadeTimer = setInterval(() => { step++; if (step >= steps) { clearInterval(this.fadeTimer); this.fadeTimer = null; this.stop(); if (cb) cb(); } else if (this.audio) { this.audio.volume = startVol * (1 - step / steps); } }, interval); }, fadeIn(dur) { if (!this.audio) return; const targetVol = 0.6; this.audio.volume = 0.01; const steps = 20; const interval = (dur * 1000) / steps; let step = 0; const timer = setInterval(() => { step++; if (step >= steps) { clearInterval(timer); if (this.audio) this.audio.volume = targetVol; } else if (this.audio) { this.audio.volume = targetVol * (step / steps); } }, interval); }, play(theme) { if (this.muted) return; this.stop(); this.currentTheme = theme || 'abyss'; this.playing = true; const src = this._pickTrack(this.currentTheme); this.audio = new Audio(src); this.audio.loop = true; this.audio.volume = 0.01; this.audio.play().catch(() => {}); this.fadeIn(1.0); }, switchTheme(theme) { if (theme === this.currentTheme) return; this.fadeOut(0.4, () => { this.play(theme); }); }, toggle() { this.muted = !this.muted; if (this.muted) { this.fadeOut(0.3); } else { this.play(this.currentTheme); } return this.muted; } };
 
-                function toggleBgm() { const muted = bgm.toggle(); const btn = document.getElementById('bgm-toggle'); btn.innerHTML = muted ? "<i class='fa-solid fa-volume-xmark'></i>" : "<i class='fa-solid fa-music'></i>"; btn.classList.toggle('muted', muted); }
+                function toggleBgm() { const muted = bgm.toggle(); const btn = document.getElementById('bgm-toggle'); btn.innerHTML = muted ? "<i class='gi-gi-volume'></i>" : "<i class='gi-gi-volume'></i>"; btn.classList.toggle('muted', muted); }
                 ====== [BGM 禁用结束] ====== */
         
         
@@ -3064,7 +3064,7 @@ let spriteMode = false;
                         addLog('⛓️ 你没有可以献祭的装备...', 'log-system');
                         return;
                     }
-                    let html = `<div style="text-align:center;color:#c6f;font-size:16px;margin-bottom:12px;"><i class='fa-solid fa-link'></i> 选择一件装备献祭给祭坛</div>`;
+                    let html = `<div style="text-align:center;color:#c6f;font-size:16px;margin-bottom:12px;"><i class='gi-gi-link'></i> 选择一件装备献祭给祭坛</div>`;
                     html += '<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">';
                     equipped.forEach(key => {
                         const eq = p.equipment[key];
@@ -3144,7 +3144,7 @@ let spriteMode = false;
                     }
                     shuffleArray(available);
                     const choices = available.slice(0, Math.min(3, available.length));
-                    let html = `<div style="text-align:center;color:#6cf;font-size:16px;margin-bottom:12px;"><i class='fa-solid fa-book-open'></i> 选择一项天赋免费学习</div>`;
+                    let html = `<div style="text-align:center;color:#6cf;font-size:16px;margin-bottom:12px;"><i class='gi-gi-library'></i> 选择一项天赋免费学习</div>`;
                     html += '<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">';
                     choices.forEach(t => {
                         html += `<div onclick="learnLibraryTalent('${t.id}')" style="cursor:pointer;background:#0a1a2a;border:2px solid #6cf;border-radius:8px;padding:12px 16px;min-width:150px;transition:all 0.2s;"
@@ -3215,7 +3215,7 @@ let spriteMode = false;
                                 container.innerHTML = '<div style="text-align:center;color:#888;padding:20px;">你没有装备可强化</div>';
                                 return;
                             }
-                            let html = `<div style="color:#aaa;font-size:12px;margin-bottom:8px;"><i class='fa-solid fa-coins'></i> 金币：${gameState.gold} &nbsp;|&nbsp; 强化消费金币给装备 +1（低费）或 +2（高费）属性</div>`;
+                            let html = `<div style="color:#aaa;font-size:12px;margin-bottom:8px;"><i class='gi-gi-coins'></i> 金币：${gameState.gold} &nbsp;|&nbsp; 强化消费金币给装备 +1（低费）或 +2（高费）属性</div>`;
                             html += '<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">';
                             equipped.forEach(key => {
                                 const eq = p.equipment[key];
@@ -3606,7 +3606,7 @@ function updateStatusBar() {
             
 // 调试模式：HP 显示带标记
             if (gameState.godMode) {
-                document.getElementById('stat-hp').innerHTML = `${p.hp}/${totalMaxHp} <i class="fa-solid fa-shield-halved ico-sm"></i>`;
+                document.getElementById('stat-hp').innerHTML = `${p.hp}/${totalMaxHp} <i class="gi-gi-defense ico-sm"></i>`;
                 document.getElementById('stat-hp').style.color = '#0ff';
                 document.getElementById('hp-bar-fill').style.background = 'linear-gradient(90deg, #0ff, #0f0)';
             } else {
@@ -4142,7 +4142,7 @@ let healPercent = clsFloor.floorHealPercent || 0;
 // ==================== 👊 铁拳 ====================
         function launchFist(gameView, start, end, enemyIndex, dur) {
             const el = createFx(gameView, 'fx-fist', start.x - 14, start.y - 14);
-            el.innerHTML = "<i class='fa-solid fa-hand-fist'></i>";
+            el.innerHTML = "<i class='gi-gi-fist'></i>";
             let trailI = 0;
             const trailIv = setInterval(() => {
                 if (trailI >= 5) { clearInterval(trailIv); return; }
@@ -4165,7 +4165,7 @@ let healPercent = clsFloor.floorHealPercent || 0;
                 // 铁拳命中用 💥 emoji
                 const hit = document.createElement('div');
                 hit.className = 'fx-fist-hit';
-                hit.innerHTML = "<i class='fa-solid fa-explosion'></i>";
+                hit.innerHTML = "<i class='gi-gi-explosion'></i>";
                 hit.style.left = (end.x - 18) + 'px';
                 hit.style.top = (end.y - 18) + 'px';
                 hit.style.position = 'absolute';
@@ -5260,7 +5260,7 @@ return { type: slotKey, name: fullName, quality, atk, def, maxHp, affixes, setId
                         </div>`;
                     };
             
-                    content.innerHTML = renderEquipCard(newEquip, '🆕 新装备', true) + renderEquipCard(oldEquip, '<i class="fa-solid fa-clipboard-list"></i> 当前装备', false);
+                    content.innerHTML = renderEquipCard(newEquip, '🆕 新装备', true) + renderEquipCard(oldEquip, '<i class="gi-gi-chart"></i> 当前装备', false);
                     document.getElementById('equip-compare-modal').style.display = 'flex';
                 }
         
@@ -5316,11 +5316,11 @@ return { type: slotKey, name: fullName, quality, atk, def, maxHp, affixes, setId
                         openShop(npc);
                     } else if (npc.type === 'sage') {
                                             const tips = [
-                                                '<i class="fa-solid fa-lightbulb"></i> 暴击+穿透的装备组合适合高输出',
-                                                '<i class="fa-solid fa-lightbulb"></i> 护盾属性在 Boss 战中非常关键',
-                                                '<i class="fa-solid fa-lightbulb"></i> 冰冻和眩晕可以完全跳过敌人的回合',
-                                                '<i class="fa-solid fa-lightbulb"></i> 每 5 层会遇到 Boss，击败后才能看到出口',
-                                                '<i class="fa-solid fa-lightbulb"></i> 精英怪在地图上显示为 <i class="fa-solid fa-crown"></i>，击败必掉装备'
+                                                '<i class="gi-gi-fire"></i> 暴击+穿透的装备组合适合高输出',
+                                                '<i class="gi-gi-fire"></i> 护盾属性在 Boss 战中非常关键',
+                                                '<i class="gi-gi-fire"></i> 冰冻和眩晕可以完全跳过敌人的回合',
+                                                '<i class="gi-gi-fire"></i> 每 5 层会遇到 Boss，击败后才能看到出口',
+                                                '<i class="gi-gi-fire"></i> 精英怪在地图上显示为 <i class="gi-gi-elite"></i>，击败必掉装备'
                                             ];
                                             addLog(`🧙 贤者：${npc.desc}`, 'log-system');
                                             addLog(`🧙 "${tips[Math.floor(Math.random() * tips.length)]}"`, 'log-system');
@@ -5570,10 +5570,10 @@ html += `<div style="color: ${npc.color}; font-size: 15px; font-weight: bold; ma
                     const opacity = canAfford ? '1' : '0.5';
                     
 // 物品类型图标 + 品质颜色
-                    let typeIcon = '<i class="fa-solid fa-box-open"></i>';
+                    let typeIcon = '<i class="gi-gi-chest"></i>';
                     let qColor = '#fff';
                     if (item.type === 'potion') {
-                        typeIcon = '<i class="fa-solid fa-flask"></i>';
+                        typeIcon = '<i class="gi-gi-potion"></i>';
                     } else if (CONFIG.EQUIPMENT_SLOTS[item.type]) {
                         typeIcon = CONFIG.EQUIPMENT_SLOTS[item.type].icon;
                         if (item.quality != null && CONFIG.QUALITY_CONFIG[item.quality]) {
@@ -5966,34 +5966,34 @@ function closeTalentModal() {
                                     let left = '';
                                     // 基本信息块
                                     left += '<div style="background:#0a0a0a; border:1px solid #333; border-radius:6px; padding:8px 10px; margin-bottom:8px;">';
-                                    left += '<div style="color:#0f0; font-size:14px; font-weight:bold; margin-bottom:6px; border-bottom:1px solid #333; padding-bottom:3px;"><i class="fa-solid fa-chart-bar"></i> 基本信息</div>';
+                                    left += '<div style="color:#0f0; font-size:14px; font-weight:bold; margin-bottom:6px; border-bottom:1px solid #333; padding-bottom:3px;"><i class="gi-gi-chart"></i> 基本信息</div>';
                                     let infoRows = [];
                                     infoRows.push(`名字: <b style="color:#0ff;">${gameState.playerName}</b>`);
                                                                         infoRows.push(`职业: <b style="color:#ff0;">${cls.icon} ${cls.name}</b>  |  等级: <b style="color:#0f0;">Lv.${p.level}</b>`);
                                                                         infoRows.push(`楼层: <b style="color:#fa0;">第 ${gameState.floor} 层</b>  |  主题: <b style="color:#888;">${theme.icon} ${theme.name}</b>`);
-                                                                        infoRows.push(`<i class='fa-solid fa-coins'></i>金币: <b style="color:#fa0;">${gameState.gold}</b>`);
+                                                                        infoRows.push(`<i class='gi-gi-coins'></i>金币: <b style="color:#fa0;">${gameState.gold}</b>`);
                                                                         left += infoRows.map(r => `<div style="font-size:14px; padding:2px 0;">${r}</div>`).join('');
                                     left += '</div>';
 
                                     // 属性块
                                     left += '<div style="background:#0a0a0a; border:1px solid #333; border-radius:6px; padding:8px 10px; margin-bottom:8px;">';
-                                    left += '<div style="color:#0f0; font-size:14px; font-weight:bold; margin-bottom:6px; border-bottom:1px solid #333; padding-bottom:3px;"><i class="fa-solid fa-chart-line"></i> 战斗属性</div>';
+                                    left += '<div style="color:#0f0; font-size:14px; font-weight:bold; margin-bottom:6px; border-bottom:1px solid #333; padding-bottom:3px;"><i class="gi-gi-chart"></i> 战斗属性</div>';
                                     let statRows = [];
-                                    statRows.push(`<i class='fa-solid fa-heart'></i>HP: <b style="color:#f66;">${p.hp}/${totalMaxHp}</b> <span style="color:#888;font-size:12px;">(基础${p.maxHp}+装备${equipHp})</span>`);
-                                                                        statRows.push(`<i class='fa-solid fa-gavel'></i>攻击: <b style="color:#ff0;">${totalAtk}</b> <span style="color:#888;font-size:12px;">(基础${p.atk}+装备${equipAtk})</span>`);
-                                                                        statRows.push(`<i class='fa-solid fa-shield-halved'></i>防御: <b style="color:#6af;">${totalDef}</b> <span style="color:#888;font-size:12px;">(基础${p.def}+装备${equipDef})</span>`);
+                                    statRows.push(`<i class='gi-gi-heart'></i>HP: <b style="color:#f66;">${p.hp}/${totalMaxHp}</b> <span style="color:#888;font-size:12px;">(基础${p.maxHp}+装备${equipHp})</span>`);
+                                                                        statRows.push(`<i class='gi-gi-attack'></i>攻击: <b style="color:#ff0;">${totalAtk}</b> <span style="color:#888;font-size:12px;">(基础${p.atk}+装备${equipAtk})</span>`);
+                                                                        statRows.push(`<i class='gi-gi-defense'></i>防御: <b style="color:#6af;">${totalDef}</b> <span style="color:#888;font-size:12px;">(基础${p.def}+装备${equipDef})</span>`);
                                                                         left += statRows.map(r => `<div style="font-size:14px; padding:2px 0;">${r}</div>`).join('');
                                                                                                             // 新战斗属性（紧凑一行）
                                                                                                             const pStats = [];
-                                                                                                            if (p.shield > 0) pStats.push(`<i class='fa-solid fa-shield-halved'></i>盾:${p.shield}`);
-                                                                                                            if (p.penetration + affix.penetration > 0) pStats.push(`<i class='fa-solid fa-gear'></i>穿透:${p.penetration + affix.penetration}`);
-                                                                                                            if (p.critRate + affix.critRate > 5) pStats.push(`<i class='fa-solid fa-explosion'></i>暴击:${p.critRate + affix.critRate}%`);
-                                                                                                            if (p.doubleHit + affix.doubleHit > 0) pStats.push(`<i class='fa-solid fa-gavel'></i>连击:${p.doubleHit + affix.doubleHit}%`);
-                                                                                                            if (p.damageReduce + affix.damageReduce > 0) pStats.push(`<i class='fa-solid fa-shield-halved'></i>免伤:${p.damageReduce + affix.damageReduce}%`);
-                                                                                                            if (p.freezeRate + affix.freezeRate > 0) pStats.push(`<i class='fa-solid fa-snowflake'></i>冰:${p.freezeRate + affix.freezeRate}%`);
-                                                                                                            if (p.stunRate + affix.stunRate > 0) pStats.push(`<i class='fa-solid fa-face-dizzy'></i>晕:${p.stunRate + affix.stunRate}%`);
-                                                                                                            if (p.igniteRate + affix.igniteRate > 0) pStats.push(`<i class='fa-solid fa-fire'></i>燃:${p.igniteRate + affix.igniteRate}%`);
-                                                                                                            if (p.vulnerableRate + affix.vulnerableRate > 0) pStats.push(`<i class='fa-solid fa-heart-crack'></i>脆:${p.vulnerableRate + affix.vulnerableRate}%`);
+                                                                                                            if (p.shield > 0) pStats.push(`<i class='gi-gi-defense'></i>盾:${p.shield}`);
+                                                                                                            if (p.penetration + affix.penetration > 0) pStats.push(`<i class='gi-gi-gear'></i>穿透:${p.penetration + affix.penetration}`);
+                                                                                                            if (p.critRate + affix.critRate > 5) pStats.push(`<i class='gi-gi-explosion'></i>暴击:${p.critRate + affix.critRate}%`);
+                                                                                                            if (p.doubleHit + affix.doubleHit > 0) pStats.push(`<i class='gi-gi-attack'></i>连击:${p.doubleHit + affix.doubleHit}%`);
+                                                                                                            if (p.damageReduce + affix.damageReduce > 0) pStats.push(`<i class='gi-gi-defense'></i>免伤:${p.damageReduce + affix.damageReduce}%`);
+                                                                                                            if (p.freezeRate + affix.freezeRate > 0) pStats.push(`<i class='gi-gi-snowflake'></i>冰:${p.freezeRate + affix.freezeRate}%`);
+                                                                                                            if (p.stunRate + affix.stunRate > 0) pStats.push(`<i class='gi-gi-explosion'></i>晕:${p.stunRate + affix.stunRate}%`);
+                                                                                                            if (p.igniteRate + affix.igniteRate > 0) pStats.push(`<i class='gi-gi-fire'></i>燃:${p.igniteRate + affix.igniteRate}%`);
+                                                                                                            if (p.vulnerableRate + affix.vulnerableRate > 0) pStats.push(`<i class='gi-gi-heart'></i>脆:${p.vulnerableRate + affix.vulnerableRate}%`);
                                                                                                             if (pStats.length > 0) {
                                                                                                                 left += `<div style="font-size:12px; color:#aaa; padding:4px 0 0; border-top:1px solid #222; margin-top:2px;">${pStats.join(' · ')}</div>`;
                                                                                                             }
@@ -6001,22 +6001,22 @@ function closeTalentModal() {
 
                                     // 词缀 + 职业合并块
                                     left += '<div style="background:#0a0a0a; border:1px solid #333; border-radius:6px; padding:8px 10px;">';
-                                    left += '<div style="color:#0f0; font-size:14px; font-weight:bold; margin-bottom:6px; border-bottom:1px solid #333; padding-bottom:3px;"><i class="fa-solid fa-diamond"></i> 词缀 & 职业</div>';
+                                    left += '<div style="color:#0f0; font-size:14px; font-weight:bold; margin-bottom:6px; border-bottom:1px solid #333; padding-bottom:3px;"><i class="gi-gi-treasure"></i> 词缀 & 职业</div>';
                                     // 词缀（紧凑网格）
                                     let affixLines = [];
                                     if (affix.critRate) affixLines.push(`💥<b style="color:#f66;">暴击+${affix.critRate}%</b>`);
                                     if (affix.bossDmg) affixLines.push(`🗡️<b style="color:#f93;">破阵+${affix.bossDmg}%</b>`);
                                     if (affix.block) affixLines.push(`🛡️<b style="color:#6af;">格挡+${affix.block}%</b>`);
-                                    if (affix.lifesteal) affixLines.push(`<i class='fa-solid fa-droplet'></i><b style="color:#f00;">吸血+${affix.lifesteal}%</b>`);
+                                    if (affix.lifesteal) affixLines.push(`<i class='gi-gi-droplet'></i><b style="color:#f00;">吸血+${affix.lifesteal}%</b>`);
                                     if (affix.gold) affixLines.push(`💰<b style="color:#fa0;">财富+${affix.gold}%</b>`);
-                                    if (affix.luck) affixLines.push(`<i class='fa-solid fa-clover'></i><b style="color:#0f0;">幸运+${affix.luck}%</b>`);
-                                    if (affix.heal) affixLines.push(`<i class='fa-solid fa-flask'></i><b style="color:#f6f;">治愈+${affix.heal}%</b>`);
-                                    if (affix.regen) affixLines.push(`<i class='fa-solid fa-sparkles'></i><b style="color:#0ff;">再生+${affix.regen}%</b>`);
+                                    if (affix.luck) affixLines.push(`<i class='gi-gi-clover'></i><b style="color:#0f0;">幸运+${affix.luck}%</b>`);
+                                    if (affix.heal) affixLines.push(`<i class='gi-gi-potion'></i><b style="color:#f6f;">治愈+${affix.heal}%</b>`);
+                                    if (affix.regen) affixLines.push(`<i class='gi-gi-magic'></i><b style="color:#0ff;">再生+${affix.regen}%</b>`);
                                     if (affix.penetration) affixLines.push(`🔩<b style="color:#fff;">穿透+${affix.penetration}</b>`);
                                     if (affix.doubleHit) affixLines.push(`🗡️<b style="color:#fa0;">连击+${affix.doubleHit}%</b>`);
                                     if (affix.damageReduce) affixLines.push(`🛡️<b style="color:#6af;">免伤+${affix.damageReduce}%</b>`);
                                     if (affix.maxShield) affixLines.push(`🛡️<b style="color:#0ff;">护盾+${affix.maxShield}</b>`);
-                                    if (affix.killHeal) affixLines.push(`<i class='fa-solid fa-skull'></i><b style="color:#f66;">回血+${affix.killHeal}%</b>`);
+                                    if (affix.killHeal) affixLines.push(`<i class='gi-gi-skull'></i><b style="color:#f66;">回血+${affix.killHeal}%</b>`);
                                     if (affix.freezeRate) affixLines.push(`❄️<b style="color:#6cf;">冰冻+${affix.freezeRate}%</b>`);
                                     if (affix.stunRate) affixLines.push(`😵<b style="color:#ff0;">眩晕+${affix.stunRate}%</b>`);
                                     if (affix.igniteRate) affixLines.push(`🔥<b style="color:#f60;">点燃+${affix.igniteRate}%</b>`);
@@ -6033,7 +6033,7 @@ function closeTalentModal() {
                                     let right = '';
                                     // 装备 3×3 紧凑
                                     right += '<div style="background:#0a0a0a; border:1px solid #333; border-radius:6px; padding:8px 10px; margin-bottom:8px;">';
-                                    right += '<div style="color:#0f0; font-size:14px; font-weight:bold; margin-bottom:6px; border-bottom:1px solid #333; padding-bottom:3px;"><i class="fa-solid fa-backpack"></i> 装备 (9槽)</div>';
+                                    right += '<div style="color:#0f0; font-size:14px; font-weight:bold; margin-bottom:6px; border-bottom:1px solid #333; padding-bottom:3px;"><i class="gi-gi-chest"></i> 装备 (9槽)</div>';
                                     right += '<div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:3px;">';
                                     slotKeys.forEach(key => {
                                         const item = eq[key];
@@ -6074,7 +6074,7 @@ function closeTalentModal() {
                                                                         right += '</div>';
                                                                         // 套装
                                                                         right += '<div style="background:#0a0a0a; border:1px solid #333; border-radius:6px; padding:10px 12px;">';
-                                                                        right += '<div style="color:#0f0; font-size:14px; font-weight:bold; margin-bottom:6px; border-bottom:1px solid #333; padding-bottom:3px;"><i class="fa-solid fa-gem"></i> 套装</div>';
+                                                                        right += '<div style="color:#0f0; font-size:14px; font-weight:bold; margin-bottom:6px; border-bottom:1px solid #333; padding-bottom:3px;"><i class="gi-gi-treasure"></i> 套装</div>';
                                                                         const setCounts = {};
                                                                         slotKeys.forEach(key => { const item = eq[key]; if (item && item.setId) setCounts[item.setId] = (setCounts[item.setId] || 0) + 1; });
                                                                         const setIds = Object.keys(setCounts);
@@ -6183,7 +6183,7 @@ function closeTalentModal() {
             }
             
             content.innerHTML = html + setHtml;
-            bonusEl.innerHTML = `<i class='fa-solid fa-gavel'></i>+${totalAtk} <i class='fa-solid fa-shield-halved'></i>+${totalDef} <i class='fa-solid fa-heart'></i>+${totalHp}`;
+            bonusEl.innerHTML = `<i class='gi-gi-attack'></i>+${totalAtk} <i class='gi-gi-defense'></i>+${totalDef} <i class='gi-gi-heart'></i>+${totalHp}`;
             modal.style.display = 'flex';
             gameState.shopOpen = true;  // 锁定移动
         }

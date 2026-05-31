@@ -1,0 +1,24 @@
+{
+  "name": "rogue",
+  "version": "1.0.0",
+  "description": "HTML5 文字迷宫肉鸽游戏，复古终端风格界面，浏览器直接运行。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sharya001/abyss-labyrinth.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sharya001/abyss-labyrinth/issues"
+  },
+  "homepage": "https://github.com/sharya001/abyss-labyrinth#readme",
+  "dependencies": {
+    "fantasticon": "^4.1.0"
+  }
+}

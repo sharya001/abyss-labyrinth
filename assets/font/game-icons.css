@@ -1,0 +1,195 @@
+@font-face {
+    font-family: "game-icons";
+    src: url("./game-icons.woff2?6c6e6d0cc58c7d9c79e8ec5d145fc8a3") format("woff2"),
+url("./game-icons.woff?6c6e6d0cc58c7d9c79e8ec5d145fc8a3") format("woff"),
+url("./game-icons.ttf?6c6e6d0cc58c7d9c79e8ec5d145fc8a3") format("truetype");
+}
+
+i[class^="gi-"]:before, i[class*=" gi-"]:before {
+    font-family: game-icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.gi-gi-yeti:before {
+    content: "\f101";
+}
+.gi-gi-worm:before {
+    content: "\f102";
+}
+.gi-gi-wolf:before {
+    content: "\f103";
+}
+.gi-gi-wizard:before {
+    content: "\f104";
+}
+.gi-gi-volume:before {
+    content: "\f105";
+}
+.gi-gi-treasure:before {
+    content: "\f106";
+}
+.gi-gi-treant:before {
+    content: "\f107";
+}
+.gi-gi-sword:before {
+    content: "\f108";
+}
+.gi-gi-spider:before {
+    content: "\f109";
+}
+.gi-gi-snowflake:before {
+    content: "\f10a";
+}
+.gi-gi-skull:before {
+    content: "\f10b";
+}
+.gi-gi-skeleton:before {
+    content: "\f10c";
+}
+.gi-gi-shield:before {
+    content: "\f10d";
+}
+.gi-gi-shadow:before {
+    content: "\f10e";
+}
+.gi-gi-sage:before {
+    content: "\f10f";
+}
+.gi-gi-ring:before {
+    content: "\f110";
+}
+.gi-gi-potion:before {
+    content: "\f111";
+}
+.gi-gi-portal:before {
+    content: "\f112";
+}
+.gi-gi-portal-town:before {
+    content: "\f113";
+}
+.gi-gi-poison:before {
+    content: "\f114";
+}
+.gi-gi-necklace:before {
+    content: "\f115";
+}
+.gi-gi-merchant:before {
+    content: "\f116";
+}
+.gi-gi-magic:before {
+    content: "\f117";
+}
+.gi-gi-link:before {
+    content: "\f118";
+}
+.gi-gi-library:before {
+    content: "\f119";
+}
+.gi-gi-lava-beast:before {
+    content: "\f11a";
+}
+.gi-gi-imp:before {
+    content: "\f11b";
+}
+.gi-gi-ice-spirit:before {
+    content: "\f11c";
+}
+.gi-gi-helmet:before {
+    content: "\f11d";
+}
+.gi-gi-heart:before {
+    content: "\f11e";
+}
+.gi-gi-healer:before {
+    content: "\f11f";
+}
+.gi-gi-golem:before {
+    content: "\f120";
+}
+.gi-gi-gold:before {
+    content: "\f121";
+}
+.gi-gi-gloves:before {
+    content: "\f122";
+}
+.gi-gi-ghost:before {
+    content: "\f123";
+}
+.gi-gi-gear:before {
+    content: "\f124";
+}
+.gi-gi-frost-beast:before {
+    content: "\f125";
+}
+.gi-gi-fist:before {
+    content: "\f126";
+}
+.gi-gi-fire:before {
+    content: "\f127";
+}
+.gi-gi-fire-elemental:before {
+    content: "\f128";
+}
+.gi-gi-explosion:before {
+    content: "\f129";
+}
+.gi-gi-event-npc:before {
+    content: "\f12a";
+}
+.gi-gi-elite:before {
+    content: "\f12b";
+}
+.gi-gi-droplet:before {
+    content: "\f12c";
+}
+.gi-gi-dice:before {
+    content: "\f12d";
+}
+.gi-gi-defense:before {
+    content: "\f12e";
+}
+.gi-gi-darkness:before {
+    content: "\f12f";
+}
+.gi-gi-coins:before {
+    content: "\f130";
+}
+.gi-gi-clover:before {
+    content: "\f131";
+}
+.gi-gi-chest:before {
+    content: "\f132";
+}
+.gi-gi-chest-armor:before {
+    content: "\f133";
+}
+.gi-gi-chart:before {
+    content: "\f134";
+}
+.gi-gi-boss:before {
+    content: "\f135";
+}
+.gi-gi-boots:before {
+    content: "\f136";
+}
+.gi-gi-blacksmith:before {
+    content: "\f137";
+}
+.gi-gi-bat:before {
+    content: "\f138";
+}
+.gi-gi-attack:before {
+    content: "\f139";
+}
+.gi-gi-arena:before {
+    content: "\f13a";
+}
+.gi-gi-altar:before {
+    content: "\f13b";
+}
