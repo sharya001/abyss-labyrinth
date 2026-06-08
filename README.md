@@ -140,5 +140,4 @@ Rogue/
 **创建日期**: 2026-05-27
 **最后更新**: 2026-06-01
 **当前版本**: v3.18.0
-**项目路径**: `/Users/xiaoyu/Desktop/Rogue/`
 **文件**: `abyss-labyrinth.html`（~6500行）
